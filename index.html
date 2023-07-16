@@ -82,7 +82,7 @@
         fetch('articles/' + event.target.getAttribute('data-article') + '.txt')
           .then(req => req.text())
           .then(data => {
-            document.querySelector('#article-content').innerHTML = `<b>${event.target.getAttribute('data-article')}</b><p>${data}</p>`;
+            document.querySelector('#article-content').innerHTML = `<b>${event.target.getAttribute('data-article').split('-').map(a=>a.charAt(0).toUpperCase()+a.slice(1)).join(' ')}</b><p>${data}</p>`;
           });
       }
     });
