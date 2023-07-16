@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shinies.Space | The Simple News</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #1f2125;
+      color: #f1f3f4;
+    }
+
+    #article-content {
+      background: #333;
+      padding: 20px;
+      border-radius: 8px;
+      margin: auto;
+      width: fit-content;
+    }
+
+    .header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .nav {
+      background-color: #f4f4f4;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #333;
+      margin: 0 10px;
+    }
+
+    .nav a:hover {
+      text-decoration: underline;
+    }
+
+    .content {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    .bottom-notice {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      font-size: 80%;
+      width: 25%;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>Shinies.Space | The Simple News</h1>
+  </header>
+  <nav class="nav">
+    <a data-article="joe-biden">Joe Biden stubs his toe</a>
+    <a data-article="russia-sea-submarines">Russia uses the ocean to hide submarines</a>
+    <a data-article="florida-man-toes">Florida Man sucks burglar's toes</a>
+  </nav>
+
+  <div class="content">
+    <h2>Welcome to Shinies.Space!</h2>
+    <p>Stay up to date with the latest news and current events. Browse our articles and explore the world of news.</p>
+  </div>
+
+  <div id="article-content">
+  </div>
+
+  <script>
+    document.querySelector('nav a').forEach(a => {
+      a.onclick = el => {
+        fetch('articles/' + el.getAttribute('data-article') + '.txt')
+          .then(req => req.json())
+          .then(data => {
+            document.querySelector('#article-content').innerHTML = `<b>${el.getAttribute('data-article')}</b><p>${data}</p>`;
+          });
+      }
+    });
+  </script>
+
+  <div class="bottom-notice">
+    Copyright © 2023 shinies.space - Protected under European Copyright Law.
+      All of the news on this websites are completely fictional and only for amusement purposes.
+  </div>
+</body>
+</html>
