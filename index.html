@@ -77,11 +77,11 @@
 
   <script>
     document.querySelectorAll('nav a').forEach(a => {
-      a.onclick = el => {
-        fetch('articles/' + el.getAttribute('data-article') + '.txt')
+      a.onclick = event => {
+        fetch('articles/' + event.target.getAttribute('data-article') + '.txt')
           .then(req => req.json())
           .then(data => {
-            document.querySelector('#article-content').innerHTML = `<b>${el.getAttribute('data-article')}</b><p>${data}</p>`;
+            document.querySelector('#article-content').innerHTML = `<b>${event.target.getAttribute('data-article')}</b><p>${data}</p>`;
           });
       }
     });
