@@ -76,7 +76,7 @@
   </div>
 
   <script>
-    document.querySelector('nav a').forEach(a => {
+    document.querySelectorAll('nav a').forEach(a => {
       a.onclick = el => {
         fetch('articles/' + el.getAttribute('data-article') + '.txt')
           .then(req => req.json())
