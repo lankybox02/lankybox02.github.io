@@ -80,7 +80,7 @@
     document.querySelectorAll('nav a').forEach(a => {
       a.onclick = event => {
         fetch('articles/' + event.target.getAttribute('data-article') + '.txt')
-          .then(req => req.json())
+          .then(req => req.text())
           .then(data => {
             document.querySelector('#article-content').innerHTML = `<b>${event.target.getAttribute('data-article')}</b><p>${data}</p>`;
           });
